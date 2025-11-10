@@ -27,8 +27,8 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+.env.development
+.env.production
 
 # But keep template files
-!.env.development
-!.env.production
 !.env.example
