@@ -28,7 +28,7 @@ function Navbar() {
       <div className="container">
         <div className="navbar-content">
           <div className="navbar-logo">
-                <img src="assets/images/svlogolog (2).png" 
+                <img src="/assets/images/svlogolog (2).png" 
                 alt="SikadVoltz Logo" className="logo-img" />
                 <span className="logo-text">
                 <span className="text-sikad">SiKaD</span>

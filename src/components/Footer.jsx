@@ -18,7 +18,7 @@ function Footer() {
           {/* Logo & Description */}
           <div className="footer-section">
             <div className="footer-logo">
-              <img src="assets/images/svlogolog.png" 
+              <img src="/assets/images/svlogolog.png" 
                 alt="SikadVoltz Logo" className="logo-img" />
               <span className="logo-text">SIKADVOLTZ</span>
             </div>
