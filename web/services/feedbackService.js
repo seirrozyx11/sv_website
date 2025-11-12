@@ -69,7 +69,8 @@ const feedbackService = {
           subject: `Feedback - ${feedbackData.category}`,
           message: feedbackData.message,
           rating: feedbackData.rating,
-          category: 'feedback'
+          category: 'feedback',
+          turnstileToken: feedbackData.turnstileToken // Cloudflare Turnstile token for bot protection
         })
       })
       

@@ -125,6 +125,32 @@
   transform: scale(1.1) rotate(5deg);
 }
 
+/* Cloudflare Turnstile Widget Styling */
+.turnstile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(16, 185, 129, 0.03);
+  border-radius: var(--radius-md);
+  border: 2px dashed rgba(16, 185, 129, 0.2);
+}
+
+.turnstile-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Make Turnstile responsive */
+@media (max-width: 768px) {
+  .turnstile-widget {
+    transform: scale(0.85);
+    transform-origin: center;
+  }
+}
+
 .submit-btn {
   margin-top: 1rem;
   display: flex;

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { FaStar, FaPaperPlane } from 'react-icons/fa'
-import feedbackService from '../services/feedbackService'
+import feedbackService from '../config/services/feedbackService'
+import Turnstile from './Turnstile'
 import './Feedback.css'
 
 function Feedback() {
@@ -11,6 +12,7 @@ function Feedback() {
     category: 'general',
     message: ''
   })
+  const [turnstileToken, setTurnstileToken] = useState(null)
   const [feedbackStats, setFeedbackStats] = useState({
     totalFeedback: 0,
     averageRating: 0,
@@ -49,14 +51,33 @@ function Feedback() {
     return () => clearInterval(interval)
   }, [])
 
+  const handleTurnstileVerify = (token) => {
+    setTurnstileToken(token)
+    if (token) {
+      console.log('✅ Turnstile verification successful')
+    } else {
+      console.log('❌ Turnstile verification failed')
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    // Validate Turnstile token
+    if (!turnstileToken) {
+      setError('Please complete the security verification')
+      return
+    }
+    
     setSubmitting(true)
     setError(null)
     
     try {
-      // Submit feedback using the service
-      const result = await feedbackService.submitFeedback(formData)
+      // Submit feedback using the service with Turnstile token
+      const result = await feedbackService.submitFeedback({
+        ...formData,
+        turnstileToken
+      })
       
       if (result.success) {
         setSubmitted(true)
@@ -67,6 +88,7 @@ function Feedback() {
           category: 'general',
           message: ''
         })
+        setTurnstileToken(null) // Reset Turnstile token
         
         // Refresh stats after submission
         const updatedStats = await feedbackService.getFeedbackStats()
@@ -181,7 +203,16 @@ function Feedback() {
                 />
               </div>
 
-              <button type="submit" className="btn btn-primary submit-btn" disabled={submitting}>
+              {/* Cloudflare Turnstile - Bot Protection */}
+              <div className="form-group turnstile-container">
+                <Turnstile onVerify={handleTurnstileVerify} theme="auto" />
+              </div>
+
+              <button 
+                type="submit" 
+                className="btn btn-primary submit-btn" 
+                disabled={submitting || !turnstileToken}
+              >
                 <FaPaperPlane /> {submitting ? 'Submitting...' : 'Submit Feedback'}
               </button>
 
