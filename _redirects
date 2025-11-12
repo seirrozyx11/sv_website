@@ -1,0 +1,11 @@
+# Cloudflare Pages Redirects Configuration
+# SPA (Single Page Application) routing for React
+
+# Redirect all routes to index.html for client-side routing
+/*    /index.html   200
+
+# Deep link support for password reset
+/reset-password/*  /index.html  200
+
+# API proxy (optional - if you want to proxy backend requests)
+# /api/*  https://sikadvoltz-backend.onrender.com/api/:splat  200

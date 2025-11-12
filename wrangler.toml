@@ -1,0 +1,14 @@
+# Cloudflare Pages Configuration for SIKADVOLTZ Website
+name = "sikadvoltz-website"
+compatibility_date = "2024-01-01"
+
+# Pages configuration
+pages_build_output_dir = "dist"
+
+[env.production]
+name = "sikadvoltz-website"
+route = "sikadvoltz.com/*"
+
+[env.production.vars]
+NODE_ENV = "production"
+VITE_API_URL = "https://sikadvoltz-backend.onrender.com"

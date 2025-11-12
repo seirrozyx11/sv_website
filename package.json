@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name=sikadvoltz-website",
+    "deploy:preview": "npm run build && wrangler pages deploy dist --project-name=sikadvoltz-website --branch=preview"
   },
   "dependencies": {
     "react": "^18.2.0",
