@@ -5,6 +5,16 @@ const Turnstile = ({ onVerify, theme = 'light' }) => {
   const widgetId = useRef(null);
 
   useEffect(() => {
+    const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY;
+    
+    // Debug: Log the site key status
+    if (!siteKey) {
+      console.error('❌ VITE_TURNSTILE_SITE_KEY is not defined! Check your .env file and restart dev server.');
+      return;
+    }
+    
+    console.log('✅ Turnstile site key loaded:', siteKey);
+    
     // Wait for Turnstile script to load
     const checkTurnstile = setInterval(() => {
       if (window.turnstile && containerRef.current) {
@@ -12,7 +22,7 @@ const Turnstile = ({ onVerify, theme = 'light' }) => {
         
         // Render Turnstile widget
         widgetId.current = window.turnstile.render(containerRef.current, {
-          sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY,
+          sitekey: siteKey,
           theme: theme, // 'light', 'dark', or 'auto'
           callback: (token) => {
             console.log('Turnstile verified:', token);
