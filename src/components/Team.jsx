@@ -28,7 +28,7 @@ function Team() {
     {
       name: 'Boss Jessie',
       role: 'Hardware Engineer | Network Specialist & QA Tester',
-      image: 'assets/images/J.jpg',
+      image: '/assets/images/j.jpg',
       description: 'Designs and tests hardware systems, and handles wireless communication and network integration.',
       social: {
       github: '#',
