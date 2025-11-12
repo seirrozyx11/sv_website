@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { FaDownload, FaPlay } from 'react-icons/fa'
-import statsService from '../services/statsService'
+import statsService from '../../web/services/statsService'
 import './Hero.css'
 
 function Hero() {

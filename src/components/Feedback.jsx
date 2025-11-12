@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { FaStar, FaPaperPlane } from 'react-icons/fa'
-import feedbackService from '../config/services/feedbackService'
+import feedbackService from '../../web/services/feedbackService'
 import Turnstile from './Turnstile'
 import './Feedback.css'
 
