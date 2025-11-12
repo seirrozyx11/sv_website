@@ -3,8 +3,12 @@ import { useEffect, useRef } from 'react';
 const Turnstile = ({ onVerify, theme = 'light' }) => {
   const containerRef = useRef(null);
   const widgetId = useRef(null);
+  const isRendered = useRef(false);
 
   useEffect(() => {
+    // Prevent multiple renders
+    if (isRendered.current) return;
+    
     const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY;
     
     if (!siteKey) {
@@ -14,13 +18,14 @@ const Turnstile = ({ onVerify, theme = 'light' }) => {
     
     // Wait for Turnstile script to load
     const checkTurnstile = setInterval(() => {
-      if (window.turnstile && containerRef.current) {
+      if (window.turnstile && containerRef.current && !isRendered.current) {
         clearInterval(checkTurnstile);
+        isRendered.current = true;
         
         // Render Turnstile widget
         widgetId.current = window.turnstile.render(containerRef.current, {
           sitekey: siteKey,
-          theme: theme, // 'light', 'dark', or 'auto'
+          theme: theme,
           callback: (token) => {
             onVerify(token);
           },
@@ -37,11 +42,17 @@ const Turnstile = ({ onVerify, theme = 'light' }) => {
     // Cleanup
     return () => {
       clearInterval(checkTurnstile);
-      if (window.turnstile && widgetId.current) {
-        window.turnstile.remove(widgetId.current);
+      if (window.turnstile && widgetId.current !== null) {
+        try {
+          window.turnstile.remove(widgetId.current);
+        } catch (e) {
+          // Widget already removed
+        }
+        widgetId.current = null;
+        isRendered.current = false;
       }
     };
-  }, [onVerify, theme]);
+  }, [theme]);
 
   return <div ref={containerRef} className="turnstile-widget"></div>;
 };

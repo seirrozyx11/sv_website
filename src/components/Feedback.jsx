@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { FaStar, FaPaperPlane } from 'react-icons/fa'
 import feedbackService from '../../web/services/feedbackService'
 import Turnstile from './Turnstile'
@@ -51,14 +51,9 @@ function Feedback() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleTurnstileVerify = (token) => {
+  const handleTurnstileVerify = useCallback((token) => {
     setTurnstileToken(token)
-    if (token) {
-      console.log('✅ Turnstile verification successful')
-    } else {
-      console.log('❌ Turnstile verification failed')
-    }
-  }
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
