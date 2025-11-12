@@ -4,36 +4,36 @@ import './Team.css'
 function Team() {
   const teamMembers = [
     {
-      name: 'Irvs Ebajan',
-      role: 'Lead Developer & Hardware Engineer',
+      name: 'Boss Irvs',
+      role: 'Project Manager | Lead Developer & IoT Systems Architect',
       image: 'assets/images/I.jpg',
-      description: 'Specializes in IoT systems and full-stack development',
+      description: 'Manages the overall system architecture and leads development across firmware, mobile, cloud and UX enhancement.',
       social: {
-        github: '#',
+        github: 'seirrozyx11',
         linkedin: '#',
-        email: 'sln32166@gmail.com'
+        email: 'mailto:sln32166@gmail.com'
       }
     },
     {
-      name: 'Erwin Yambao',
-      role: 'UI/UX Designer & Technical Writer',
+      name: 'Boss Yams',
+      role: 'Front-end & Mobile App Developer | UI/UX Designer & QA Specialist',
       image: 'assets/images/E.jpg',
-      description: 'Flutter expert, UI/UX designer, and Documentation specialist',
+      description: 'Handles mobile app development, UI/UX design, quality assurance, and technical documentation.',
       social: {
         github: '#',
         linkedin: '#',
-        email: 'mailto:eruwinsama00@gmail.com'
+        email: 'mailtoerwinyambao@gmail.com'
       }
     },
     {
-      name: 'Jessie Gamayo',
-      role: 'Hardware Engineer',
-      image: 'assets/images/j.jpg',
-      description: 'Node.js and database architecture specialist',
+      name: 'Boss Jessie',
+      role: 'Hardware Engineer | Network Specialist & QA Tester',
+      image: 'assets/images/J.jpg',
+      description: 'Designs and tests hardware systems, and handles wireless communication and network integration.',
       social: {
-        github: '#',
+      github: '#',
         linkedin: '#',
-        email: 'mailto:member3@example.com'
+        email: 'mailtojessiegamayo@gmail.com'
       }
     }
   ]

@@ -1,5 +1,6 @@
 .prototype {
-  background: var(--color-white);
+  background: linear-gradient(180deg, var(--color-white) 0%, var(--color-gray-light) 100%);
+  position: relative;
 }
 
 .prototype-subtitle {
@@ -7,6 +8,7 @@
   font-size: 1.25rem;
   color: var(--color-gray);
   margin-bottom: 3rem;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .prototype-tabs {
@@ -15,6 +17,7 @@
   gap: 1rem;
   margin-bottom: 3rem;
   flex-wrap: wrap;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
 }
 
 .tab {
@@ -27,26 +30,60 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: var(--transition-base);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.tab::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
 }
 
 .tab:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
+}
+
+.tab:hover::before {
+  width: 100%;
 }
 
 .tab.active {
   background: var(--gradient-primary);
   color: var(--color-white);
   border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+}
+
+.tab.active::before {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .tab-icon {
   font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.tab:hover .tab-icon,
+.tab.active .tab-icon {
+  transform: scale(1.2) rotate(5deg);
 }
 
 .prototype-content {
   margin-bottom: 4rem;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .demo-video {
@@ -64,12 +101,41 @@
   justify-content: center;
   box-shadow: var(--shadow-xl);
   border: 4px solid var(--color-white);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.video-placeholder:hover::before {
+  transform: translateX(100%);
+}
+
+.video-placeholder:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(16, 185, 129, 0.25);
 }
 
 .play-icon {
   font-size: 4rem;
   color: var(--color-primary);
   margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 5px 15px rgba(16, 185, 129, 0.3));
+}
+
+.video-placeholder:hover .play-icon {
+  transform: scale(1.2);
+  color: var(--color-secondary);
 }
 
 .video-placeholder p {
@@ -77,6 +143,11 @@
   font-weight: 600;
   color: var(--color-dark);
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.video-placeholder:hover p {
+  color: var(--color-primary);
 }
 
 .video-placeholder small {
@@ -94,12 +165,30 @@
   overflow: hidden;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  transition: var(--transition-base);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0) 0%, rgba(5, 150, 105, 0.9) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Allow clicks to pass through */
 }
 
 .gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
 }
 
 .image-placeholder {
@@ -111,12 +200,73 @@
   justify-content: center;
   padding: 2rem;
   border: 3px solid var(--color-white);
+  transition: all 0.4s ease;
+}
+
+.gallery-item:hover .image-placeholder {
+  transform: scale(1.05);
 }
 
 .image-placeholder svg {
   font-size: 3rem;
   color: var(--color-primary);
   margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  background: #000;
+}
+
+.prototype-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: blur(0);
+}
+
+.gallery-item:hover .prototype-image {
+  transform: scale(1.15);
+  filter: blur(1px);
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(42, 42, 42, 0.7) 90%, transparent 100%);
+  padding: 3rem 1.5rem 1.5rem;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover .image-overlay {
+  transform: translateY(0);
+}
+
+.image-overlay h4 {
+  color: var(--color-white);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.image-overlay p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.gallery-item:hover .image-placeholder svg {
+  transform: rotate(10deg) scale(1.2);
 }
 
 .image-placeholder p {
@@ -124,6 +274,11 @@
   color: var(--color-dark);
   text-align: center;
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.gallery-item:hover .image-placeholder p {
+  color: var(--color-primary);
 }
 
 .image-placeholder small {
@@ -137,18 +292,36 @@
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2rem;
   padding: 3rem;
-  background: var(--color-gray-light);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
   border-radius: var(--radius-lg);
+  border: 2px solid rgba(16, 185, 129, 0.1);
+  animation: fadeInUp 0.6s ease-out 0.4s both;
 }
 
 .feature-box {
   text-align: center;
+  padding: 1.5rem;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
 }
 
 .feature-box h4 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   color: var(--color-dark);
+  transition: color 0.3s ease;
+}
+
+.feature-box:hover h4 {
+  color: var(--color-primary);
 }
 
 .feature-box p {
@@ -168,4 +341,141 @@
   .image-gallery {
     grid-template-columns: 1fr;
   }
+  
+  .prototype-features {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
 }
+
+/* =============================== */
+/* ✅ Image Modal / Lightbox       */
+/* =============================== */
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.modal-backdrop {
+  display: none; /* ✅ No more double background */
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  animation: scaleIn 0.25s ease-out;
+}
+
+/* ✅ Close button */
+.modal-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  font-size: 2rem;
+  background: #ffffff;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.15) rotate(90deg);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ✅ Modal image */
+.modal-image {
+  width: 100%;
+  height: auto;
+  max-height: calc(90vh - 120px);
+  object-fit: contain;
+  background: #000;
+}
+
+/* ✅ Title + Description */
+.modal-info {
+  padding: 1.5rem;
+  border-top: 3px solid var(--color-primary);
+  background: var(--color-white);
+}
+
+.modal-info h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.5rem;
+  color: var(--color-dark);
+}
+
+.modal-info p {
+  color: var(--color-gray);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* =============================== */
+/* ✅ Animations                   */
+/* =============================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* =============================== */
+/* ✅ Responsive Fixes             */
+/* =============================== */
+
+@media (max-width: 768px) {
+  .image-modal {
+    padding: 0.5rem;
+  }
+
+  .modal-content {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-image {
+    max-height: calc(100vh - 150px);
+  }
+
+  .modal-info {
+    padding: 1rem;
+  }
+
+  .modal-info h3 {
+    font-size: 1.25rem;
+  }
+}
+

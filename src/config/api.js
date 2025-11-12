@@ -5,7 +5,8 @@
 export const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 // Log the API URL being used (helpful for debugging deployment)
-console.log('🔧 API Configuration:', {
+console.log('API Configuration:', 
+  {
   VITE_API_URL: import.meta.env.VITE_API_URL,
   API_BASE: API_BASE,
   mode: import.meta.env.MODE
@@ -46,7 +47,7 @@ export const apiCall = async (endpoint, options = {}) => {
     
     return await response.json()
   } catch (error) {
-    console.error('API Error:', error)
+    console.error(error)
     throw error
   }
 }

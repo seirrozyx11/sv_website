@@ -10,20 +10,15 @@ class StatsService {
    */
   async getStats() {
     try {
-      console.log('🔄 Fetching stats from:', `${API_BASE}/api/v1/stats`);
       const response = await fetch(`${API_BASE}/api/v1/stats`);
-      
-      console.log('📡 Response status:', response.status);
-      
+  
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
       const result = await response.json();
-      console.log('📊 Stats received:', result);
       
       if (result.success && result.data) {
-        console.log('✅ Returning MongoDB data:', result.data);
         return {
           users: result.data.users || 0,
           activities: result.data.activities || 0,
@@ -33,12 +28,9 @@ class StatsService {
         };
       }
       
-      throw new Error('Invalid response format');
+      throw new Error('Invalid response format: Status 500');
       
     } catch (error) {
-      console.error('❌ Error fetching stats:', error);
-      console.log('⚠️ Using fallback data');
-      
       // Return fallback data if API fails
       return {
         users: 100,

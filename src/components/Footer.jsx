@@ -36,6 +36,18 @@ function Footer() {
             </div>
           </div>
 
+          {/* Technologies */}
+          <div className="footer-section">
+            <h4>Built With</h4>
+            <ul className="footer-tech">
+              <li>Flutter & Dart</li>
+              <li>Node.js & Express</li>
+              <li>Microcontroller </li>
+              <li>MongoDB</li>
+              <li>React.js</li>
+            </ul>
+          </div>
+
           {/* Quick Links */}
           <div className="footer-section">
             <h4>Quick Links</h4>
@@ -58,18 +70,6 @@ function Footer() {
               <li>Academic Research</li>
             </ul>
           </div>
-
-          {/* Technologies */}
-          {/* <div className="footer-section">
-            <h4>Built With</h4>
-            <ul className="footer-tech">
-              <li>Flutter & Dart</li>
-              <li>Node.js & Express</li> */}
-              {/* <li>ESP32 & BLE</li> */}
-              {/* <li>MongoDB</li>
-              <li>React.js</li>
-            </ul>
-          </div> */}
         </div>
 
         {/* Footer Bottom */}
@@ -78,7 +78,7 @@ function Footer() {
             © 2025 SIKADVOLTZ Team. All Rights Reserved.
           </p>
           <p className="made-with">
-            Made with <FaHeart className="heart-icon" /> for sustainability and fitness
+            Made with <a href="https://www.facebook.com/jerome.delapena.716" target="_blank" rel="noopener noreferrer" className="heart-link"><FaHeart className="heart-icon" /></a> for sustainability and fitness
           </p>
         </div>
       </div>

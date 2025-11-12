@@ -23,7 +23,7 @@ function Hero() {
           error: data.error
         })
       } catch (error) {
-        console.error('Failed to fetch stats:', error)
+        console.error('Status 400:', error)
         setStats(prev => ({ ...prev, loading: false, error: true }))
       }
     }
@@ -93,8 +93,8 @@ function Hero() {
                 alt="SikadVoltz Prototype" 
                 className="hero-image"
                 />
-              {/* <p>Prototype Image</p> */}
-              {/* <small>SIKADVOLTZ</small> */}
+              {/* { <p>Prototype Image</p> } */}
+              {/* { <small>SIKADVOLTZ</small> } */}
             </div>
           </div>
         </div>

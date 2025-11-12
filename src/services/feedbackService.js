@@ -5,30 +5,20 @@ const feedbackService = {
    * Get feedback statistics from backend
    */
   async getFeedbackStats() {
-    console.log('🔄 Fetching feedback stats from:', `${API_BASE}/api/contact/feedback/stats`)
-    
     try {
       const response = await fetch(`${API_BASE}/api/contact/feedback/stats`)
-      console.log('📡 Feedback stats response status:', response.status)
-      
+
+      // console.log('Hello')
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       
       const result = await response.json()
-      console.log('📊 Feedback stats received:', result)
-      
       if (result.success && result.data) {
-        console.log('✅ Returning real feedback data:', result.data)
         return result.data
       }
-      
       throw new Error('Invalid response format')
-      
     } catch (error) {
-      console.error('❌ Error fetching feedback stats:', error)
-      console.log('⚠️ Using fallback feedback data')
-      
       // Fallback data
       return {
         stats: {
@@ -66,7 +56,6 @@ const feedbackService = {
    * Submit feedback to backend
    */
   async submitFeedback(feedbackData) {
-    console.log('🔄 Submitting feedback to:', `${API_BASE}/api/contact/send`)
     
     try {
       const response = await fetch(`${API_BASE}/api/contact/send`, {
@@ -84,15 +73,11 @@ const feedbackService = {
         })
       })
       
-      console.log('📡 Submit response status:', response.status)
-      
       const result = await response.json()
-      console.log('📊 Submit result:', result)
-      
       return result
       
     } catch (error) {
-      console.error('❌ Error submitting feedback:', error)
+      console.error(error)
       throw error
     }
   }

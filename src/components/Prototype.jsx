@@ -4,6 +4,7 @@ import './Prototype.css'
 
 function Prototype() {
   const [activeTab, setActiveTab] = useState('system')
+  const [selectedImage, setSelectedImage] = useState(null)
 
   const tabs = [
     { id: 'system', label: 'Full System', icon: '🚴' },
@@ -14,19 +15,21 @@ function Prototype() {
 
   const images = {
     system: [
-      { title: 'Complete Bike Setup', description: 'Full system with charging station' },
-      { title: 'Side View', description: 'Bike with ESP32 and sensors' },
+      { title: 'Complete Bike Setup', description: 'Full system with charging station', image: '/assets/images/BSV.jpg' },
+      { title: 'Side View', description: 'Bike with Microcontroller and sensors', image: '/assets/images/sikadvoltz-prototype.png' },
     ],
     hardware: [
-      { title: 'Microcontroller Module', description: 'Microcontroller with BLE' },
-      { title: 'Dynamo Generator', description: 'Power generation unit' },
-      { title: 'USB Charging Port', description: '5V output for devices' },
+      { title: 'Microcontroller Module', description: 'Microcontroller with BLE', image: '/assets/images/E.jpg' },
+      { title: 'Dynamo Generator', description: 'Power generation unit', image: '/assets/images/I.jpg' },
+      { title: 'USB Charging Port', description: '5V output for devices', image: '/assets/images/j.jpg' },
     ],
     app: [
-      { title: 'Dashboard', description: 'Live metrics display' },
-      { title: 'Activity History', description: 'Past workout sessions' },
-      { title: 'Device Pairing', description: 'BLE connection screen' },
-      { title: 'Achievements', description: 'Badges and goals' },
+      { title: 'Live Dashboard', description: 'Live metrics display', image: '/assets/images/app-livedashboard.png' },
+      { title: 'Activity History', description: 'Past workout sessions', image: '/assets/images/activity-history.png' },
+      { title: 'Device Pairing', description: 'BLE connection screen', image: '/assets/images/app-devicepairing.png' },
+      { title: 'Home Dashboard', description: 'Home Dashboard display', image: '/assets/images/app-dashboard.png' },
+      { title: 'Battery Station', description: 'Device charging display', image: '/assets/images/app-batterystation.png' },
+      { title: 'Achievements', description: 'Badges and goals', image: '/assets/images/app-achievements.png' },
     ]
   }
 
@@ -66,16 +69,103 @@ function Prototype() {
             <div className="image-gallery">
               {images[activeTab]?.map((image, index) => (
                 <div key={index} className="gallery-item">
-                  <div className="image-placeholder">
-                    <FaImage />
-                    <p>{image.title}</p>
-                    <small>{image.description}</small>
-                  </div>
+                  {image.image ? (
+                    <div 
+                      className="image-container"
+                      onClick={() => {
+                        console.log('Image clicked:', image)
+                        setSelectedImage(image)
+                      }}
+                    >
+                      <img 
+                        src={image.image} 
+                        alt={image.title}
+                        className="prototype-image"
+                      />
+                      <div className="image-overlay">
+                        <h4>{image.title}</h4>
+                        <p>{image.description}</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="image-placeholder">
+                      <FaImage />
+                      <p>{image.title}</p>
+                      <small>{image.description}</small>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           )}
         </div>
+
+        {/* Image Modal/Lightbox */}
+        {selectedImage && (
+          <div 
+            className="image-modal" 
+            onClick={() => setSelectedImage(null)}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.9)',
+              zIndex: 99999,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <div className="modal-backdrop"></div>
+            <div 
+              className="modal-content" 
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                position: 'relative',
+                maxWidth: '90vw',
+                maxHeight: '90vh',
+                backgroundColor: 'white',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                zIndex: 100000
+              }}
+            >
+              <button 
+                className="modal-close" 
+                onClick={() => setSelectedImage(null)}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  width: '40px',
+                  height: '40px',
+                  backgroundColor: 'white',
+                  border: 'none',
+                  borderRadius: '50%',
+                  fontSize: '24px',
+                  cursor: 'pointer',
+                  zIndex: 100001
+                }}
+              >
+                ×
+              </button>
+              <img 
+                src={selectedImage.image} 
+                className="modal-image"
+                style={{
+                  width: '100%',
+                  maxHeight: 'calc(90vh - 100px)',
+                  objectFit: 'contain'
+                }}
+              />
+              <div className="modal-info" style={{ padding: '0rem', borderTop: '2px solid #10B981' }}>
+              </div>
+            </div>
+          </div>
+        )}
+
 
         {/* Features Highlight */}
         <div className="prototype-features">

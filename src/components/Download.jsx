@@ -1,10 +1,9 @@
-import QRCode from 'react-qr-code'
 import { FaAndroid, FaApple, FaDownload, FaGithub } from 'react-icons/fa'
 import './Download.css'
 
 function Download() {
   // Replace with your actual download link
-  const downloadUrl = 'https://github.com/yourusername/sikadvoltz/releases'
+  const downloadUrl = 'https://drive.google.com/file/d/1XjvUwNl4SM7E62cShteT_2rl2JJ3YDiS/view?usp=sharing'
 
   return (
     <section id="download" className="section download">
@@ -20,11 +19,10 @@ function Download() {
             <div className="qr-card">
               <h3>Scan to Download</h3>
               <div className="qr-wrapper">
-                <QRCode
-                  value={downloadUrl}
-                  size={200}
-                  level="H"
-                  style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                <img 
+                  src="/assets/images/qr-sv.png" 
+                  alt="SIKADVOLTZ QR Code"
+                  style={{ width: "100%", height: "auto", maxWidth: "200px" }}
                 />
               </div>
               <p className="qr-instruction">
@@ -51,33 +49,25 @@ function Download() {
                 </div>
               </a>
 
-              <a 
-                href={downloadUrl}
-                className="download-btn ios"
-                target="_blank"
-                rel="noopener noreferrer"
-                readOnly={true}
+              <div 
+                className="download-btn ios disabled"
               >
                 <FaApple className="platform-icon" />
-                <div className="btn-text" readOnly={true} >
+                <div className="btn-text">
                   <small>Download for</small>
                   <strong>iOS - Coming Soon</strong>
                 </div>
-              </a>
+              </div>
 
-              <a 
-                href={downloadUrl}
-                className="download-btn github"
-                target="_blank"
-                rel="noopener noreferrer"
-                readOnly={true}
+              <div 
+                className="download-btn github disabled"
               >
                 <FaGithub className="platform-icon" />
-                <div className="btn-text" readOnly={true} >
+                <div className="btn-text">
                   <small>View on</small>
                   <strong>GitHub - Coming Soon</strong>
                 </div>
-              </a>
+              </div>
             </div>
 
             {/* App Info */}
@@ -88,7 +78,7 @@ function Download() {
               </div>
               <div className="info-item">
                 <strong>Size</strong>
-                <span>~75 MB</span>
+                <span>75 MB</span>
               </div>
               <div className="info-item">
                 <strong>Requirements</strong>
@@ -108,7 +98,7 @@ function Download() {
                 <li>Enable "Install from Unknown Sources" if prompted (Android)</li>
                 <li>Open the app and grant Bluetooth & Location permissions</li>
                 <li>Create an account or log in</li>
-                <li>Pair with your ESP32 device and start pedaling!</li>
+                <li>Pair with your Microcontroller device and start pedaling!</li>
               </ol>
             </div>
           </div>
@@ -117,15 +107,13 @@ function Download() {
         {/* Release Notes */}
         <div className="release-notes">
           <h3>Latest Release Notes</h3>
-          <br></br>
-          <br></br>
           <ul>
-            <li><h4>● Initial public release</h4></li>
-            <li><h4>● Real-time cycling metrics tracking</h4></li>
-            <li><h4>● ESP32 BLE connectivity</h4></li>
-            <li><h4>● Activity history and analytics</h4></li>
-            <li><h4>● Achievement system</h4></li>
-            <li><h4>● Smart workout reminders</h4></li>
+            <li>Initial public release</li>
+            <li>Real-time cycling metrics tracking</li>
+            <li>ESP32 BLE connectivity</li>
+            <li>Activity history and analytics</li>
+            <li>Achievement system</li>
+            <li>Smart workout reminders</li>
           </ul>
         </div>
       </div>
