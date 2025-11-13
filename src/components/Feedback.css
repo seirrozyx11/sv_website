@@ -387,11 +387,17 @@
   color: var(--color-dark);
 }
 
+
 .feedback-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+}
+
+.see-more-btn.always-right {
+  margin-left: auto;
 }
 
 .feedback-meta small {

@@ -149,18 +149,18 @@ function Feedback() {
               : feedback.message
             }
           </span>
+        </div>
+        <div className="feedback-meta">
+          <small>- {feedback.name}</small>
           {shouldTruncate && (
             <button
               type="button"
-              className="see-more-btn inline-right"
+              className="see-more-btn always-right"
               onClick={() => toggleFeedbackExpansion(index)}
             >
               {isExpanded ? 'See Less' : 'See More'}
             </button>
           )}
-        </div>
-        <div className="feedback-meta">
-          <small>- {feedback.name}</small>
         </div>
       </div>
     );
