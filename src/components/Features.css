@@ -1,6 +1,7 @@
 .features {
   background: linear-gradient(180deg, var(--color-gray-light) 0%, var(--color-white) 100%);
   position: relative;
+  scroll-margin-top: 80px;
 }
 
 .features::before {
@@ -223,5 +224,39 @@
 @media (max-width: 768px) {
   .features-grid {
     grid-template-columns: 1fr;
+  }
+  .feature-card {
+    padding: 1rem;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-xs);
+  }
+  .feature-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+  }
+  .feature-icon {
+    font-size: 1.3rem;
+  }
+  .feature-category {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 0.7rem;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+  .feature-description {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+  .feature-highlights li {
+    padding: 0.4rem 0;
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
+  .features-grid {
+    gap: 1rem;
   }
 }

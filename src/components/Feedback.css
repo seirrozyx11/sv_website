@@ -1,3 +1,9 @@
+/* Responsive fix for features grid on mobile */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
 .feedback {
   background: linear-gradient(180deg, var(--color-gray-light) 0%, var(--color-white) 100%);
   position: relative;
