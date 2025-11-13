@@ -37,13 +37,13 @@ const feedbackService = {
         recentFeedback: [
           {
             name: 'Alex',
-            message: 'Amazing concept! Love how it combines fitness with sustainability.',
+            message: 'Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job!',
             rating: 5,
             timeAgo: '2 days ago'
           },
           {
             name: 'Sarah',
-            message: 'The real-time tracking is so accurate. Great job!',
+            message: 'The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job!',
             rating: 5,
             timeAgo: '1 week ago'
           }

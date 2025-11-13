@@ -360,6 +360,7 @@
   gap: 0.5rem;
 }
 
+
 .feedback-message {
   color: var(--color-gray);
   font-style: italic;
@@ -367,6 +368,7 @@
   margin-bottom: 0.25rem;
   transition: color 0.3s ease;
   display: inline;
+  white-space: pre-line;
 }
 
 .recent-feedback-item:hover .feedback-message {
