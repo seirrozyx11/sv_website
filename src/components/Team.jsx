@@ -85,15 +85,15 @@ function Team() {
         {/* Project Info */}
         <div className="project-info">
           <div className="info-box">
-            <h4>🎓 Academic Institution</h4>
+            <h4>Academic Institution</h4>
             <p>Assumption College of Davao</p>
           </div>
           <div className="info-box">
-            <h4>📅 Project Timeline</h4>
+            <h4>Project Timeline</h4>
             <p>March 2025 - November 2025</p>
           </div>
           <div className="info-box">
-            <h4>🏆 Project Status</h4>
+            <h4>Project Status</h4>
             <p>Prototype Complete & Tested</p>
           </div>
         </div>

@@ -17,7 +17,6 @@ function Navbar() {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'Features', href: '#features' },
-    // { name: 'Technology', href: '#tech' },
     { name: 'Prototype', href: '#prototype' },
     { name: 'Download', href: '#download' },
     { name: 'Feedback', href: '#feedback' },

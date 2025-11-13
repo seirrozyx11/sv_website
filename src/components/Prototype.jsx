@@ -15,13 +15,13 @@ function Prototype() {
 
   const images = {
     system: [
-      { title: 'Complete Bike Setup', description: 'Full system with charging station', image: '/assets/images/BSV.jpg' },
+      { title: 'Complete Bike Setup', description: 'Full system with charging station', image: '/assets/images/comingsoon.png' },
       { title: 'Side View', description: 'Bike with Microcontroller and sensors', image: '/assets/images/sikadvoltz-prototype.png' },
     ],
     hardware: [
-      { title: 'Microcontroller Module', description: 'Microcontroller with BLE', image: '/assets/images/E.jpg' },
-      { title: 'Dynamo Generator', description: 'Power generation unit', image: '/assets/images/I.jpg' },
-      { title: 'USB Charging Port', description: '5V output for devices', image: '/assets/images/j.jpg' },
+      { title: 'Microcontroller Module', description: 'Microcontroller with BLE', image: '/assets/images/microcontroller.png' },
+      { title: 'Dynamo Generator', description: 'Power generation unit', image: '/assets/images/alternator.png' },
+      { title: 'USB Charging Port', description: '5V output for devices', image: '/assets/images/chargingport.png' },
     ],
     app: [
       { title: 'Live Dashboard', description: 'Live metrics display', image: '/assets/images/app-livedashboard.png' },
@@ -62,7 +62,7 @@ function Prototype() {
               <div className="video-placeholder">
                 <FaPlay className="play-icon" />
                 <p>Demo Video Coming Soon</p>
-                <small>Add your prototype demo video here (30-60 seconds)</small>
+                <img src="/assets/images/comingsoon.png"></img>
               </div>
             </div>
           ) : (
@@ -170,19 +170,19 @@ function Prototype() {
         {/* Features Highlight */}
         <div className="prototype-features">
           <div className="feature-box">
-            <h4>⚡ Power Output</h4>
+            <h4>Power Output</h4>
             <p>Up to 100W during active pedaling</p>
           </div>
           <div className="feature-box">
-            <h4>🔋 Charging Capacity</h4>
+            <h4>Charging Capacity</h4>
             <p>5V/2A USB output for devices</p>
           </div>
           <div className="feature-box">
-            <h4>📊 Real-Time Data</h4>
+            <h4>Real-Time Data</h4>
             <p>Live metrics via BLE connection</p>
           </div>
           <div className="feature-box">
-            <h4>🏆 Tested & Proven</h4>
+            <h4>Tested & Proven</h4>
             <p>100+ hours of testing</p>
           </div>
         </div>

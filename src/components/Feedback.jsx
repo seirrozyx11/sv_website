@@ -230,10 +230,10 @@ function Feedback() {
             <div className="info-card">
               <h3>Why Your Feedback Matters</h3>
               <ul>
-                <li>🎯 Help us prioritize features</li>
-                <li>🐛 Report bugs and issues</li>
-                <li>💡 Suggest improvements</li>
-                <li>🤝 Shape the future of SIKADVOLTZ</li>
+                <li>- Help us prioritize features</li>
+                <li>- Report bugs and issues</li>
+                <li>- Suggest improvements</li>
+                <li>- Shape the future of SIKADVOLTZ</li>
               </ul>
             </div>
 

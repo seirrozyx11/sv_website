@@ -34,10 +34,10 @@ function ProblemSolution() {
       title: 'Energy Generation',
       description: 'Convert pedaling into USB power for charging devices'
     },
-    {
-      title: 'Gamified Fitness',
-      description: 'Earn achievements and track measurable impact'
-    },
+    // {
+    //   title: 'Gamified Fitness',
+    //   description: 'Earn achievements and track measurable impact'
+    // },
     {
       title: 'Eco-Friendly',
       description: 'Sustainable solution for public spaces like campuses and parks'
