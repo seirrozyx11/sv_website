@@ -353,11 +353,23 @@
 }
 
 
+
 .feedback-message-row {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 0.5rem;
+  width: 100%;
+}
+
+.feedback-message-row .feedback-message {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.feedback-message-row .see-more-btn {
+  flex-shrink: 0;
+  margin-left: 1rem;
 }
 
 
