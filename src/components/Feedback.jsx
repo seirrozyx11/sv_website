@@ -132,47 +132,34 @@ function Feedback() {
   }
 
   const renderFeedbackMessage = (feedback, index) => {
-    const isExpanded = expandedFeedback[index]
-    const shouldTruncate = feedback.message.length > 100
+    const isExpanded = !!expandedFeedback[index];
+    const shouldTruncate = feedback.message.length > 100;
+    const truncatedText = truncateMessage(feedback.message);
 
-    if (!shouldTruncate || isExpanded) {
-      return (
-        <div className="feedback-content-wrapper">
-          <p className="feedback-message">
-            {feedback.message}
-          </p>
-          <div className="feedback-meta">
-            <small>- {feedback.name}</small>
-            {shouldTruncate && (
-              <button 
-                className="see-more-btn inline-right"
-                onClick={() => toggleFeedbackExpansion(index)}
-              >
-                See Less
-              </button>
-            )}
-          </div>
-        </div>
-      )
-    }
-
-    const truncatedText = truncateMessage(feedback.message)
     return (
       <div className="feedback-content-wrapper">
         <p className="feedback-message">
-          {truncatedText}...
+          {shouldTruncate && !isExpanded ? (
+            <>
+              {truncatedText}...{' '}
+            </>
+          ) : (
+            feedback.message
+          )}
         </p>
         <div className="feedback-meta">
           <small>- {feedback.name}</small>
-          <button 
-            className="see-more-btn inline-right"
-            onClick={() => toggleFeedbackExpansion(index)}
-          >
-            See More
-          </button>
+          {shouldTruncate && (
+            <button
+              className="see-more-btn inline-right"
+              onClick={() => toggleFeedbackExpansion(index)}
+            >
+              {isExpanded ? 'See Less' : 'See More'}
+            </button>
+          )}
         </div>
       </div>
-    )
+    );
   }
 
   return (
