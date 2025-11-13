@@ -74,7 +74,7 @@ function Download() {
             <div className="app-info">
               <div className="info-item">
                 <strong>Version</strong>
-                <span>1.0.0</span>
+                <span>1.0</span>
               </div>
               <div className="info-item">
                 <strong>Size</strong>

@@ -30,7 +30,7 @@ const feedbackService = {
         recentFeedback: [
           {
             name: 'Alex',
-            message: 'Amazing concept! Love how it combines fitness with sustainability.',
+            message: 'Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.',
             rating: 5,
             timeAgo: '2 days ago'
           },

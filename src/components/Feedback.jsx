@@ -23,6 +23,7 @@ function Feedback() {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(null)
+  const [expandedFeedback, setExpandedFeedback] = useState({})
 
   // Fetch feedback stats on component mount
   useEffect(() => {
@@ -84,6 +85,7 @@ function Feedback() {
           message: ''
         })
         setTurnstileToken(null) // Reset Turnstile token
+        setExpandedFeedback({}) // Reset expanded states
         
         // Refresh stats after submission
         const updatedStats = await feedbackService.getFeedbackStats()
@@ -115,6 +117,62 @@ function Feedback() {
 
   const handleRating = (rating) => {
     setFormData({ ...formData, rating })
+  }
+
+  const toggleFeedbackExpansion = (index) => {
+    setExpandedFeedback(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }))
+  }
+
+  const truncateMessage = (message, maxLength = 100) => {
+    if (message.length <= maxLength) return message
+    return message.substring(0, maxLength)
+  }
+
+  const renderFeedbackMessage = (feedback, index) => {
+    const isExpanded = expandedFeedback[index]
+    const shouldTruncate = feedback.message.length > 100
+
+    if (!shouldTruncate || isExpanded) {
+      return (
+        <div className="feedback-content-wrapper">
+          <p className="feedback-message">
+            {feedback.message}
+          </p>
+          <div className="feedback-meta">
+            <small>- {feedback.name}</small>
+            {shouldTruncate && (
+              <button 
+                className="see-more-btn inline-right"
+                onClick={() => toggleFeedbackExpansion(index)}
+              >
+                See Less
+              </button>
+            )}
+          </div>
+        </div>
+      )
+    }
+
+    const truncatedText = truncateMessage(feedback.message)
+    return (
+      <div className="feedback-content-wrapper">
+        <p className="feedback-message">
+          {truncatedText}...
+        </p>
+        <div className="feedback-meta">
+          <small>- {feedback.name}</small>
+          <button 
+            className="see-more-btn inline-right"
+            onClick={() => toggleFeedbackExpansion(index)}
+          >
+            See More
+          </button>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -269,8 +327,7 @@ function Feedback() {
                     <div className="feedback-rating">
                       {feedbackService.formatRating(feedback.rating)}
                     </div>
-                    <p>{feedback.message}</p>
-                    <small>- {feedback.name}</small>
+                    {renderFeedbackMessage(feedback, index)}
                   </div>
                 ))
               ) : (

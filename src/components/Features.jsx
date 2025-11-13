@@ -8,42 +8,42 @@ function Features() {
       category: 'Fitness Tracking',
       title: 'Real-Time Metrics',
       description: 'Track calories, speed, distance, and duration with precision',
-      highlights: ['Live calorie burn', 'Speed & cadence', 'Distance tracking', 'Activity history']
+      highlights: ['Live Calorie Burn', 'Speed & Cadence', 'Distance Tracking', 'Activity History']
     },
     {
       icon: <FaBolt />,
       category: 'Power Generation',
       title: 'Energy Conversion',
       description: 'Convert your pedaling into usable USB power',
-      highlights: ['5V USB output', 'Live power monitoring', 'Energy tracking', 'Device charging']
+      highlights: ['5V USB Output', 'Live Power Monitoring', 'Energy Tracking', 'Device Charging']
     },
     {
       icon: <FaBell />,
       category: 'Smart Alerts',
       title: 'Reminders & Notifications',
       description: 'Never miss your workout with intelligent reminders',
-      highlights: ['Workout reminders', 'Goal alerts', 'Milestone notifications', 'Push notifications']
+      highlights: ['Workout Reminders', 'Goal Alerts', 'Milestone Notifications', 'Push Notifications']
     },
     {
       icon: <FaTrophy />,
       category: 'Gamification',
       title: 'Achievements & Goals',
       description: 'Stay motivated with personalized goals and badges',
-      highlights: ['Custom goals', 'Achievement system', 'Progress tracking', 'Leaderboards']
+      highlights: ['Custom Goals', 'Achievement System', 'Progress Tracking', 'Leaderboards']
     },
     {
       icon: <FaMobileAlt />,
       category: 'Mobile App',
       title: 'Cross-Platform',
       description: 'Available on Android and iOS devices',
-      highlights: ['Flutter framework', 'Offline mode', 'Dark/Light theme', 'Data export']
+      highlights: ['Flutter Framework', 'Offline Mode', 'Dark/Light Theme', 'Data Export']
     },
     {
       icon: <FaBluetooth />,
       category: 'IoT Integration',
       title: 'Microcontroller Connectivity',
       description: 'Seamless Bluetooth connection with hardware',
-      highlights: ['BLE 4.2+', 'Auto-connect', 'Real-time sync', 'Device management']
+      highlights: ['BLE 4.2+', 'Auto-Connect', 'Real-Time Sync', 'Device Management']
     }
   ]
 
