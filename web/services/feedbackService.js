@@ -15,7 +15,14 @@ const feedbackService = {
       
       const result = await response.json()
       if (result.success && result.data) {
-        return result.data
+        // Ensure all feedback messages are strings and not truncated
+        if (Array.isArray(result.data.recentFeedback)) {
+          result.data.recentFeedback = result.data.recentFeedback.map(fb => ({
+            ...fb,
+            message: typeof fb.message === 'string' ? fb.message : String(fb.message)
+          }));
+        }
+        return result.data;
       }
       throw new Error('Invalid response format')
     } catch (error) {
@@ -30,7 +37,7 @@ const feedbackService = {
         recentFeedback: [
           {
             name: 'Alex',
-            message: 'Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.Amazing concept! Love how it combines fitness with sustainability.',
+            message: 'Amazing concept! Love how it combines fitness with sustainability.',
             rating: 5,
             timeAgo: '2 days ago'
           },
