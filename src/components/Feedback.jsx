@@ -138,25 +138,29 @@ function Feedback() {
 
     return (
       <div className="feedback-content-wrapper">
-        <p className="feedback-message">
-          {shouldTruncate && !isExpanded ? (
-            <>
-              {truncatedText}...{' '}
-            </>
-          ) : (
-            feedback.message
-          )}
-        </p>
-        <div className="feedback-meta">
-          <small>- {feedback.name}</small>
+        <div className="feedback-message-row">
+          <span className="feedback-message">
+            {shouldTruncate && !isExpanded
+              ? (
+                  <>
+                    {truncatedText}...{' '}
+                  </>
+                )
+              : feedback.message
+            }
+          </span>
           {shouldTruncate && (
             <button
+              type="button"
               className="see-more-btn inline-right"
               onClick={() => toggleFeedbackExpansion(index)}
             >
               {isExpanded ? 'See Less' : 'See More'}
             </button>
           )}
+        </div>
+        <div className="feedback-meta">
+          <small>- {feedback.name}</small>
         </div>
       </div>
     );
