@@ -4,13 +4,14 @@
 // Get API URL from environment variable or use default
 export const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
-// Log the API URL being used (helpful for debugging deployment)
-console.log('API Configuration:', 
-  {
-  VITE_API_URL: import.meta.env.VITE_API_URL,
-  API_BASE: API_BASE,
-  mode: import.meta.env.MODE
-})
+// Safe approach - only logs in development
+if (import.meta.env.DEV) {
+  console.log('API Configuration:', {
+    VITE_API_URL: import.meta.env.VITE_API_URL,
+    API_BASE: API_BASE,
+    mode: import.meta.env.MODE
+  });
+}
 
 export const API_ENDPOINTS = {
   // Base URLs
