@@ -78,7 +78,7 @@ function Footer() {
             © 2025 SIKADVOLTZ Team. All Rights Reserved.
           </p>
           <p className="made-with">
-            Made with <a href="https://media.discordapp.net/attachments/1364815051101573270/1438646163787091968/image.png?ex=6917a326&is=691651a6&hm=7ce98e32a9c3a342a280550848536174fd2efc9f057eb2e39bc9b8d9d0b23d04&=&format=webp&quality=lossless&width=570&height=422" target="_blank" rel="noopener noreferrer" className="heart-link"><FaHeart className="heart-icon" /></a> for sustainability and fitness
+            Made with <a href="https://media.discordapp.net/attachments/1260262068863631380/1439151061788004464/image.png?ex=6919795f&is=691827df&hm=ab0962d046300461aaeaf138d0e3763b35f749573acbf134f2f75888e2c37c5d&=&format=webp&quality=lossless&width=570&height=422" target="_blank" rel="noopener noreferrer" className="heart-link"><FaHeart className="heart-icon" /></a> for sustainability and fitness
           </p>
         </div>
       </div>
