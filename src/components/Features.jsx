@@ -35,7 +35,7 @@ function Features() {
       icon: <FaMobileAlt />,
       category: 'Mobile App',
       title: 'Cross-Platform',
-      description: 'Available on Android and iOS devices',
+      description: 'Available on Android devices with iOS support coming soon',
       highlights: ['Flutter Framework', 'Offline Mode', 'Dark/Light Theme', 'Data Export']
     },
     {
