@@ -6,11 +6,12 @@ export const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 // Safe approach - only logs in development
 if (import.meta.env.DEV) {
-  console.log('API Configuration:', {
-    VITE_API_URL: import.meta.env.VITE_API_URL,
-    API_BASE: API_BASE,
-    mode: import.meta.env.MODE
-  });
+  // console.log('API Configuration:', {
+  //   VITE_API_URL: import.meta.env.VITE_API_URL,
+  //   API_BASE: API_BASE,
+  //   mode: import.meta.env.MODE
+  // });
+  console.log("Boss? Saag man ka dire boss?");
 }
 
 export const API_ENDPOINTS = {

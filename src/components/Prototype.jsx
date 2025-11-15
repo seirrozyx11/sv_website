@@ -73,7 +73,6 @@ function Prototype() {
                     <div 
                       className="image-container"
                       onClick={() => {
-                        console.log('Image clicked:', image)
                         setSelectedImage(image)
                       }}
                     >
