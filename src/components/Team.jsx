@@ -4,20 +4,20 @@ import './Team.css'
 function Team() {
   const teamMembers = [
     {
-      name: 'Boss Irvs',
+      name: 'Irvs Ebajan',
       role: 'Project Manager | Lead Developer & IoT Systems Architect',
-      image: 'assets/images/I.jpg',
+      image: 'assets/images/proponents1.jpg',
       description: 'Manages the overall system architecture and leads development across firmware, mobile, cloud and UX enhancement.',
       social: {
-        github: 'seirrozyx11',
+        github: 'https://github.com/seirrozyx11',
         linkedin: '#',
         email: 'mailto:sln32166@gmail.com'
       }
     },
     {
-      name: 'Boss Yams',
+      name: 'Erwin Yambao',
       role: 'Front-end & Mobile App Developer | UI/UX Designer & QA Specialist',
-      image: 'assets/images/E.jpg',
+      image: 'assets/images/proponents2.jpg',
       description: 'Handles mobile app development, UI/UX design, quality assurance, and technical documentation.',
       social: {
         github: '#',
@@ -26,9 +26,9 @@ function Team() {
       }
     },
     {
-      name: 'Boss Jessie',
+      name: 'Jessie Gamayo',
       role: 'Hardware Engineer | Network Specialist & QA Tester',
-      image: '/assets/images/j.jpg',
+      image: '/assets/images/proponents3.jpg',
       description: 'Designs and tests hardware systems, and handles wireless communication and network integration.',
       social: {
       github: '#',
