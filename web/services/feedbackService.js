@@ -15,11 +15,12 @@ const feedbackService = {
       
       const result = await response.json()
       if (result.success && result.data) {
-        // Ensure all feedback messages are strings and not truncated
+        // Ensure all feedback messages are strings and include timestamps
         if (Array.isArray(result.data.recentFeedback)) {
           result.data.recentFeedback = result.data.recentFeedback.map(fb => ({
             ...fb,
-            message: typeof fb.message === 'string' ? fb.message : String(fb.message)
+            message: typeof fb.message === 'string' ? fb.message : String(fb.message),
+            createdAt: fb.createdAt || fb.timestamp || fb.createdAt || new Date().toISOString()
           }));
         }
         return result.data;
@@ -39,13 +40,13 @@ const feedbackService = {
             name: 'Alex',
             message: 'Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job!',
             rating: 5,
-            timeAgo: '2 days ago'
+            createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // 2 days ago
           },
           {
             name: 'Sarah',
             message: 'The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job!',
             rating: 5,
-            timeAgo: '1 week ago'
+            createdAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() // 1 week ago
           }
         ]
       }
