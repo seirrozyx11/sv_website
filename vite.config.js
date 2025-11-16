@@ -10,6 +10,13 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: false, // Disable source maps in production to hide source code
+    minify: 'terser', // Minify and obfuscate code
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console.log statements
+        drop_debugger: true
+      }
+    }
   }
 })
