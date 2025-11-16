@@ -4,6 +4,13 @@ import feedbackService from '../../web/services/feedbackService'
 import Turnstile from './Turnstile'
 import './Feedback.css'
 
+// Helper function to decode HTML entities
+const decodeHTML = (html) => {
+  const txt = document.createElement('textarea');
+  txt.innerHTML = html;
+  return txt.value;
+};
+
 // Helper function to calculate time ago
 const getTimeAgo = (date) => {
   if (!date) return 'recently';
@@ -162,8 +169,9 @@ function Feedback() {
 
   const renderFeedbackMessage = (feedback, index) => {
     const isExpanded = !!expandedFeedback[index];
-    const shouldTruncate = feedback.message.length > 100;
-    const truncatedText = truncateMessage(feedback.message);
+    const decodedMessage = decodeHTML(feedback.message);
+    const shouldTruncate = decodedMessage.length > 100;
+    const truncatedText = truncateMessage(decodedMessage);
 
     return (
       <div className="feedback-content-wrapper">
@@ -175,13 +183,13 @@ function Feedback() {
                     {truncatedText}...{' '}
                   </>
                 )
-              : feedback.message
+              : decodedMessage
             }&rdquo;
           </span>
         </div>
         <div className="feedback-meta">
           <div className="feedback-user-info">
-            <small className="feedback-name">{feedback.name}</small>
+            <small className="feedback-name">{decodeHTML(feedback.name)}</small>
             <small className="feedback-timestamp">{getTimeAgo(feedback.createdAt || feedback.timestamp)}</small>
           </div>
           {shouldTruncate && (
