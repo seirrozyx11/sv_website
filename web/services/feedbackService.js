@@ -13,17 +13,11 @@ const feedbackService = {
       }
       
       const result = await response.json()
-      console.log('📊 Backend feedback data:', result)
       
       if (result.success && result.data) {
         // Process feedback data and ensure timestamps are properly formatted
         if (Array.isArray(result.data.recentFeedback)) {
           result.data.recentFeedback = result.data.recentFeedback.map(fb => {
-            console.log('📝 Processing feedback:', { 
-              name: fb.name, 
-              createdAt: fb.createdAt,
-              timestamp: fb.timestamp 
-            })
             return {
               ...fb,
               message: typeof fb.message === 'string' ? fb.message : String(fb.message),
@@ -32,12 +26,11 @@ const feedbackService = {
             }
           })
         }
-        console.log('✅ Processed feedback data:', result.data.recentFeedback)
         return result.data
       }
       throw new Error('Invalid response format')
     } catch (error) {
-      console.error('❌ Failed to fetch feedback from backend:', error)
+      // Silent error handling for production
       // Fallback data with proper timestamps for testing
       return {
         stats: {

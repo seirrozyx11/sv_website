@@ -6,9 +6,14 @@ import './Feedback.css'
 
 // Helper function to decode HTML entities
 const decodeHTML = (html) => {
+  if (!html) return '';
   const txt = document.createElement('textarea');
   txt.innerHTML = html;
-  return txt.value;
+  let decoded = txt.value;
+  // Handle numeric entities that textarea doesn't decode
+  decoded = decoded.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec));
+  decoded = decoded.replace(/&#x([0-9A-Fa-f]+);/g, (match, hex) => String.fromCharCode(parseInt(hex, 16)));
+  return decoded;
 };
 
 // Helper function to calculate time ago
