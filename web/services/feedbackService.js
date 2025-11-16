@@ -8,45 +8,62 @@ const feedbackService = {
     try {
       const response = await fetch(`${API_BASE}/api/contact/feedback/stats`)
 
-      // console.log('Hello')
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       
       const result = await response.json()
+      console.log('📊 Backend feedback data:', result)
+      
       if (result.success && result.data) {
-        // Ensure all feedback messages are strings and include timestamps
+        // Process feedback data and ensure timestamps are properly formatted
         if (Array.isArray(result.data.recentFeedback)) {
-          result.data.recentFeedback = result.data.recentFeedback.map(fb => ({
-            ...fb,
-            message: typeof fb.message === 'string' ? fb.message : String(fb.message),
-            createdAt: fb.createdAt || fb.timestamp || fb.createdAt || new Date().toISOString()
-          }));
+          result.data.recentFeedback = result.data.recentFeedback.map(fb => {
+            console.log('📝 Processing feedback:', { 
+              name: fb.name, 
+              createdAt: fb.createdAt,
+              timestamp: fb.timestamp 
+            })
+            return {
+              ...fb,
+              message: typeof fb.message === 'string' ? fb.message : String(fb.message),
+              // Use the actual createdAt from MongoDB
+              createdAt: fb.createdAt || fb.timestamp
+            }
+          })
         }
-        return result.data;
+        console.log('✅ Processed feedback data:', result.data.recentFeedback)
+        return result.data
       }
       throw new Error('Invalid response format')
     } catch (error) {
-      // Fallback data
+      console.error('❌ Failed to fetch feedback from backend:', error)
+      // Fallback data with proper timestamps for testing
       return {
         stats: {
-          totalFeedback: 150,
-          averageRating: 4.8,
-          satisfactionRate: 95,
-          fiveStarCount: 120
+          totalFeedback: 3,
+          averageRating: 5,
+          satisfactionRate: 100,
+          fiveStarCount: 3
         },
         recentFeedback: [
           {
-            name: 'Alex',
-            message: 'Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job!',
+            name: 'Hans',
+            message: 'Great app!',
             rating: 5,
             createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // 2 days ago
           },
           {
-            name: 'Sarah',
-            message: 'The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job! Amazing concept! Love how it combines fitness with sustainability. The real-time tracking is so accurate. Great job!',
+            name: 'tekton',
+            message: 'i was having a good experience using the both app and the machine. the app seems user friendly, visu...',
             rating: 5,
-            createdAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() // 1 week ago
+            createdAt: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString() // 6 days ago
+          },
+          {
+            name: 'Shine',
+            message: 'Very nice and very helpful!!',
+            rating: 5,
+            createdAt: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString() // 8 days ago (1 week+)
           }
         ]
       }
