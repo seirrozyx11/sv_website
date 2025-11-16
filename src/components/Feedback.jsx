@@ -4,6 +4,35 @@ import feedbackService from '../../web/services/feedbackService'
 import Turnstile from './Turnstile'
 import './Feedback.css'
 
+// Helper function to calculate time ago
+const getTimeAgo = (date) => {
+  if (!date) return 'recently';
+  
+  const now = new Date();
+  const then = new Date(date);
+  const seconds = Math.floor((now - then) / 1000);
+  
+  if (seconds < 0) return 'just now';
+  
+  const intervals = {
+    year: 31536000,
+    month: 2592000,
+    week: 604800,
+    day: 86400,
+    hour: 3600,
+    minute: 60
+  };
+  
+  for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+    const interval = Math.floor(seconds / secondsInUnit);
+    if (interval >= 1) {
+      return `${interval} ${unit}${interval !== 1 ? 's' : ''} ago`;
+    }
+  }
+  
+  return 'just now';
+};
+
 function Feedback() {
   const [formData, setFormData] = useState({
     name: '',
@@ -140,18 +169,21 @@ function Feedback() {
       <div className="feedback-content-wrapper">
         <div className="feedback-message-row">
           <span className="feedback-message">
-            {shouldTruncate && !isExpanded
+            &ldquo;{shouldTruncate && !isExpanded
               ? (
                   <>
                     {truncatedText}...{' '}
                   </>
                 )
               : feedback.message
-            }
+            }&rdquo;
           </span>
         </div>
         <div className="feedback-meta">
-          <small>- {feedback.name}</small>
+          <div className="feedback-user-info">
+            <small className="feedback-name">{feedback.name}</small>
+            <small className="feedback-timestamp">{getTimeAgo(feedback.createdAt || feedback.timestamp)}</small>
+          </div>
           {shouldTruncate && (
             <button
               type="button"
