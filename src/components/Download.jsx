@@ -3,7 +3,7 @@ import './Download.css'
 
 function Download() {
   // Replace with your actual download link
-  const downloadUrl = 'https://drive.google.com/file/d/1XjvUwNl4SM7E62cShteT_2rl2JJ3YDiS/view?usp=sharing'
+  const downloadUrl = 'https://drive.google.com/file/d/1RgZmWQIQMOek8cd5bn7brhYIQ1qqrBUi/view?usp=sharing'
 
   return (
     <section id="download" className="section download">
