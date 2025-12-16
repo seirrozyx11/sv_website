@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { FaPlay, FaImage } from 'react-icons/fa'
 import './Prototype.css'
 
+// Helper function to get image paths
+const getImagePath = (filename) => `/assets/images/${filename}`
+
 function Prototype() {
   const [activeTab, setActiveTab] = useState('system')
   const [selectedImage, setSelectedImage] = useState(null)
@@ -15,21 +18,21 @@ function Prototype() {
 
   const images = {
     system: [
-      { title: 'Complete Bike Setup', description: 'Full system with charging station', image: '/assets/images/comingsoon.png' },
-      { title: 'Side View', description: 'Bike with Microcontroller and sensors', image: '/assets/images/sikadvoltz-prototype.png' },
+      { title: 'Complete Bike Setup', description: 'Full system with charging station', image: getImagePath('comingsoon.png') },
+      { title: 'Side View', description: 'Bike with Microcontroller and sensors', image: getImagePath('sikadvoltz-prototype.png') },
     ],
     hardware: [
-      { title: 'Microcontroller Module', description: 'Microcontroller with BLE', image: '/assets/images/microcontroller.png' },
-      { title: 'Dynamo Generator', description: 'Power generation unit', image: '/assets/images/alternator.png' },
-      { title: 'USB Charging Port', description: '5V output for devices', image: '/assets/images/chargingport.png' },
+      { title: 'Microcontroller Module', description: 'Microcontroller with BLE', image: getImagePath('microcontroller.png') },
+      { title: 'Dynamo Generator', description: 'Power generation unit', image: getImagePath('alternator.png') },
+      { title: 'USB Charging Port', description: '5V output for devices', image: getImagePath('chargingport.png') },
     ],
     app: [
-      { title: 'Live Dashboard', description: 'Live metrics display', image: '/assets/images/app-livedashboard.png' },
-      { title: 'Activity History', description: 'Past workout sessions', image: '/assets/images/activity-history.png' },
-      { title: 'Device Pairing', description: 'BLE connection screen', image: '/assets/images/app-devicepairing.png' },
-      { title: 'Home Dashboard', description: 'Home Dashboard display', image: '/assets/images/app-dashboard.png' },
-      { title: 'Battery Station', description: 'Device charging display', image: '/assets/images/app-batterystation.png' },
-      { title: 'Achievements', description: 'Badges and goals', image: '/assets/images/app-achievements.png' },
+      { title: 'Live Dashboard', description: 'Live metrics display', image: getImagePath('app-livedashboard.png') },
+      { title: 'Activity History', description: 'Past workout sessions', image: getImagePath('activity-history.png') },
+      { title: 'Device Pairing', description: 'BLE connection screen', image: getImagePath('app-devicepairing.png') },
+      { title: 'Home Dashboard', description: 'Home Dashboard display', image: getImagePath('app-dashboard.png') },
+      { title: 'Battery Station', description: 'Device charging display', image: getImagePath('app-batterystation.png') },
+      { title: 'Achievements', description: 'Badges and goals', image: getImagePath('app-achievements.png') },
     ]
   }
 
@@ -62,7 +65,7 @@ function Prototype() {
               <div className="video-placeholder">
                 <FaPlay className="play-icon" />
                 <p>Demo Video Coming Soon</p>
-                <img src="/assets/images/comingsoon.png"></img>
+                <img src={getImagePath('comingsoon.png')}></img>
               </div>
             </div>
           ) : (
